@@ -1,22 +1,15 @@
+#include <iostream>
+#include <vector>
+
 #include "Vector3.hpp"
 #include "Vector2.hpp"
 
 #pragma once
 
-class Model
+struct Model
 {
-private:
-    Vector3 origin;
-    Vector3 model[]; 
-public:
-    Model();
-    ~Model();
+    std::vector<Vector3> vertex;
+    Vector3 pivot;
+    Model(std::vector<Vector3> v, Vector3 c): vertex(v), pivot(c)
+    {}
 };
-
-Model::Model()
-{
-}
-
-Model::~Model()
-{
-}
