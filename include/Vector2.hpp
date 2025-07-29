@@ -24,7 +24,7 @@ struct Vector2
     }
     Vector2 operator/(const float &a) const
     {
-        return Vector2(x / a, y / y);
+        return Vector2(x / a, y / a);
     }
     bool operator==(const Vector2 &a) const
     {
