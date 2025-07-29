@@ -1,6 +1,12 @@
 #include <iostream>
 #pragma once
 
+// vector2 is both arrow, point and matrix :D
+/*
+[1]*[x]
+        => [x,y]
+[1]*[y]
+*/
 struct Vector2
 {
     float x;
@@ -9,7 +15,6 @@ struct Vector2
         : x(x), y(y)
     {
     }
-
     Vector2 operator+(const Vector2 &a) const
     {
         return Vector2(a.x + x, a.y + y);

@@ -6,20 +6,64 @@
 #include "Screen.hpp"
 #include "ScreenRender.hpp"
 #include "Vector2.hpp"
+#include "Vector3.hpp"
+
+Vector3 cube[] = {
+    // front
+    Vector3(-1, 0, 0),
+    Vector3(1, 0, 0),
+    Vector3(1, 1, 0),
+    Vector3(-1, 1, 0),
+
+    // left
+    Vector3(-1, 0, 0),
+    Vector3(-1, 0, 1),
+    Vector3(-1, 1, 1),
+    Vector3(-1, 1, 0),
+
+    // right
+    Vector3(1, 0, 0),
+    Vector3(1, 0, 1),
+    Vector3(1, 1, 1),
+    Vector3(1, 1, 0),
+
+    // back
+    Vector3(-1, 0, 1),
+    Vector3(1, 0, 1),
+    Vector3(1, 1, 1),
+    Vector3(-1, 1, 1)};
 
 int main(int argc, char const *argv[])
 {
-    Screen *s = new Screen(80, 20,' ,');
-    ScreenRender *r = new ScreenRender(s);
+    Screen *s = new Screen(81, 31);
+    Shapes *r = new Shapes(s);
 
-    Vector2 *pos = new Vector2(0, 0);
-    Vector2 *pos1 = new Vector2(19, 7);
+    Vector3 offset = Vector3(0, 0, 3);
+    for (size_t i = 0; i < 13; i++)
+    {
+        cube[i] = cube[i] + offset;
+    }
+    float scale = 15;
+    for (size_t i = 0; i < 13; i++)
+    {
+        cube[i].x *= scale;
+        cube[i].y *= scale;
+    }
+    float a = 1;
+    while (true)
+    {
 
-    Vector2 *pos2 = new Vector2(9, 9);
+        s->Fill('.');
 
-    s->Fill(' ');
-    r->DrawTriangle(pos, pos1, pos2, 'x');
-    s->Print();
+        for (size_t i = 0; i < 12; i += 4)
+        {
+            r->DrawPlane(cube[i]+sin(a)*5, cube[i + 1]+sin(a)*5, cube[i + 2]+sin(a)*5, cube[i + 3]+sin(a)*5, 'X');
+        }
+
+        s->Print();
+        usleep(1000*100);
+        a+=0.5;
+    }
 
     return 0;
 }
