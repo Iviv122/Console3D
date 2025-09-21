@@ -17,10 +17,9 @@ int main(int argc, char const *argv[])
     Shapes *r = new Shapes(s);
     
     Model m = Cube();
-    Vector3 offset = Vector3(0, 0, 10);
+    Vector3 offset = Vector3(0, 0, 1);
     m.Move(offset);
-    m.Scale(20);
-    m.Scale(Vector3(2,0.5,1));
+    m.Scale(10);
    
     float a = 3;
 
@@ -30,8 +29,9 @@ int main(int argc, char const *argv[])
         s->Fill(' ');
 
         DrawCube(r,m,'x');
-
-
+        m.RotateX(0.1); 
+        m.RotateY(0.2); 
+        
         s->Print();
         usleep(1000 * 100);
         a += 0.5;

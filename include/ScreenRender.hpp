@@ -57,14 +57,9 @@ public:
         DrawLine(pos3, pos, c);
     }
     // Isometric if you need it...
-    //Vector3 Translate(Vector4 point)
-    //{
-    //    return Vector3((point.x-point.z)/sqrt(2),(point.x+point.y*2+point.z)/sqrt(6),point.w);
-    //}
-
     Vector3 Translate(Vector4 point)
     {
-        return Vector3((point.x-point.z)/sqrt(2),(point.x+point.y*2+point.z)/sqrt(6),point.w);
+        return Vector3((point.x - point.z) / sqrt(2), (point.x + point.y * 2 + point.z) / sqrt(6), point.w);
     }
 
     void DrawPlane(Vector4 pos, Vector4 pos1, Vector4 pos2, Vector4 pos3, const char c)
