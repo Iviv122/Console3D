@@ -8,37 +8,46 @@
 [1]*[z]
 [1]*[w]
 */
-struct Vector3
+struct Vector4
 {
     float x;
     float y;
     float z;
-    Vector3(int x = 0, int y = 0, int z = 0)
-        : x(x), y(y), z(z)
+    float w;
+    Vector4(float x = 0, float y = 0, float z = 0,float w = 0)
+        : x(x), y(y), z(z), w(w)
     {
     }
-    Vector3 operator+(const Vector3 &a) const
+    Vector4 operator+(const Vector4 &a) const
     {
-        return Vector3(a.x + x, a.y + y, a.z + z);
+        return Vector4(a.x + x, a.y + y, a.z + z,a.w+w);
     }
-    Vector3 operator-(const Vector3 &a) const
+    Vector4 operator-(const Vector4 &a) const
     {
-        return Vector3(a.y - y, a.y - y, a.z - z);
+        return Vector4(a.y - y, a.y - y, a.z - z,a.w-w);
     }
-    Vector3 operator*(const float &a) const
+    Vector4 operator*(const float &a) const
     {
-        return Vector3(x * a, y * a, z * a);
+        return Vector4(x * a, y * a, z * a,w*a);
     }
-    Vector3 operator/(const float &a) const
+    Vector4 operator*(const Vector4 &a) const
     {
-        return Vector3(x / a, y / a, z / a);
+        return Vector4(x * a.x, y * a.y, z * a.z,w*a.w);
     }
-    bool operator==(const Vector3 &a) const
+    Vector4 operator/(const float &a) const
     {
-        return (x == a.x && y == a.y && z == a.z);
+        return Vector4(x / a, y / a, z / a, w/a);
+    }
+    bool operator==(const Vector4 &a) const
+    {
+        return (x == a.x && y == a.y && z == a.z && w == a.w);
     }
 };
-Vector3 Add(Vector3 *a, Vector3 *b)
+Vector4 Add(Vector4 *a, Vector4 *b)
 {
-    return Vector3(a->x + b->x, a->y + b->y, a->z + b->z);
+    return Vector4(a->x + b->x, a->y + b->y, a->z + b->z,a->w + b->w);
+}
+Vector4 Multiply(Vector4 *a, float b)
+{
+    return Vector4(a->x *b, a->y *b, a->z *b,a->w*b);
 }

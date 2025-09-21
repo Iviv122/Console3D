@@ -1,7 +1,7 @@
 #include "Screen.hpp"
 
-#include "Vector2.hpp"
 #include "Vector3.hpp"
+#include "Vector4.hpp"
 #include <cmath>
 
 #pragma once
@@ -16,7 +16,7 @@ public:
     {
         this->s = s;
     }
-    void DrawLine(const Vector2 pos, const Vector2 pos1, const char &c)
+    void DrawLine(const Vector3 pos, const Vector3 pos1, const char &c)
     {
         float dx = pos1.x - pos.x;
         float dy = pos1.y - pos.y;
@@ -43,25 +43,31 @@ public:
             i = i + 1;
         }
     }
-    void DrawTriangle(const Vector2 pos, const Vector2 pos1, const Vector2 pos2, const char c)
+    void DrawTriangle(const Vector3 pos, const Vector3 pos1, const Vector3 pos2, const char c)
     {
         DrawLine(pos, pos1, c);
         DrawLine(pos1, pos2, c);
         DrawLine(pos2, pos, c);
     }
-    void DrawSquare(Vector2 pos, Vector2 pos1, Vector2 pos2, Vector2 pos3, const char c)
+    void DrawSquare(Vector3 pos, Vector3 pos1, Vector3 pos2, Vector3 pos3, const char c)
     {
         DrawLine(pos, pos1, c);
         DrawLine(pos1, pos2, c);
         DrawLine(pos2, pos3, c);
         DrawLine(pos3, pos, c);
     }
-    Vector2 Translate(Vector3 dot)
+    // Isometric if you need it...
+    //Vector3 Translate(Vector4 point)
+    //{
+    //    return Vector3((point.x-point.z)/sqrt(2),(point.x+point.y*2+point.z)/sqrt(6),point.w);
+    //}
+
+    Vector3 Translate(Vector4 point)
     {
-        return Vector2(dot.x/dot.z, dot.y/dot.z);
+        return Vector3((point.x-point.z)/sqrt(2),(point.x+point.y*2+point.z)/sqrt(6),point.w);
     }
 
-    void DrawPlane(Vector3 pos, Vector3 pos1, Vector3 pos2, Vector3 pos3, const char c)
+    void DrawPlane(Vector4 pos, Vector4 pos1, Vector4 pos2, Vector4 pos3, const char c)
     {
         DrawLine(Translate(pos), Translate(pos1), c);
         DrawLine(Translate(pos1), Translate(pos2), c);
