@@ -2,7 +2,6 @@
 #include <vector>
 
 #include "Vector4.hpp"
-#include "Vector2.hpp"
 
 #pragma once
 
@@ -10,6 +9,7 @@ struct Model
 {
     std::vector<Vector4> vertex;
     Vector4 pivot;
+
     Model(std::vector<Vector4> v, Vector4 c) : vertex(v), pivot(c)
     {
     }

@@ -56,12 +56,14 @@ public:
         DrawLine(pos2, pos3, c);
         DrawLine(pos3, pos, c);
     }
-    // Isometric if you need it...
+    // Isometric =))) Skill issue btw, i could find any normal perspective so here it is XD 
     Vector3 Translate(Vector4 point)
     {
         return Vector3((point.x - point.z) / sqrt(2), (point.x + point.y * 2 + point.z) / sqrt(6), point.w);
     }
-
+    void DrawLineWorld(Vector4 pos,Vector4 pos1,char c){
+        DrawLine(Translate(pos), Translate(pos1), c);
+    }
     void DrawPolygon(Vector4 pos, Vector4 pos1, Vector4 pos2, const char c)
     {
         DrawLine(Translate(pos), Translate(pos1), c);
