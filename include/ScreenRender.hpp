@@ -62,6 +62,12 @@ public:
         return Vector3((point.x - point.z) / sqrt(2), (point.x + point.y * 2 + point.z) / sqrt(6), point.w);
     }
 
+    void DrawPolygon(Vector4 pos, Vector4 pos1, Vector4 pos2, const char c)
+    {
+        DrawLine(Translate(pos), Translate(pos1), c);
+        DrawLine(Translate(pos1), Translate(pos2), c);
+        DrawLine(Translate(pos2), Translate(pos), c);
+    }
     void DrawPlane(Vector4 pos, Vector4 pos1, Vector4 pos2, Vector4 pos3, const char c)
     {
         DrawLine(Translate(pos), Translate(pos1), c);

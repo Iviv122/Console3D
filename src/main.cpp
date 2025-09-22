@@ -9,14 +9,18 @@
 #include "Vector2.hpp"
 #include "Vector3.hpp"
 #include "Cube.hpp"
+#include "Piramid.hpp" 
 
 
 int main(int argc, char const *argv[])
 {
-    Screen *s = new Screen(81, 31);
+    Screen *s = new Screen(50, 30);
     Shapes *r = new Shapes(s);
     
-    Model m = Cube();
+    //Model m = Cube();
+    Model m = Piramid();
+
+
     Vector3 offset = Vector3(0, 0, 1);
     m.Move(offset);
     m.Scale(10);
@@ -28,7 +32,8 @@ int main(int argc, char const *argv[])
 
         s->Fill(' ');
 
-        DrawCube(r,m,'x');
+        DrawPiramid(r,m,'x');
+        //DrawCube(r,m,'x');
         m.RotateX(0.1); 
         m.RotateY(0.2); 
         
