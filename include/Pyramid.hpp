@@ -17,13 +17,13 @@ std::vector<std::vector<int>> PiramidFaces = {
 Model Piramid()
 {
     return Model(
-        {Vector4(-0.5, -0.5, -.5,1),
-         Vector4(0.5, -0.5, -.5,1),
-         Vector4(0, 0.366, -.5,1),
-         Vector4(0, -0.211, .5,1)},
+        {Vector4(-0.5, -0.5, -.5, 1),
+         Vector4(0.5, -0.5, -.5, 1),
+         Vector4(0, 0.366, -.5, 1),
+         Vector4(0, -0.211, .5, 1)},
         Vector4(0, 0, 0, 1));
 }
-void DrawPiramid(Shapes *r, Model cube, char c)
+void DrawPyramid(Shapes *r, Model cube, char c)
 {
     for (int i = 0; i < PiramidFaces.size(); i++)
     {

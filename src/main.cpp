@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
 
         s->Fill(' ');
 
-        DrawPiramid(r,m,'x');
+        DrawPyramid(r,m,'x');
         //DrawCube(r,m,'x');
         m.RotateX(0.1); 
         m.RotateY(0.2); 
