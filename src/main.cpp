@@ -9,7 +9,7 @@
 #include "Vector2.hpp"
 #include "Vector3.hpp"
 #include "Cube.hpp"
-#include "Piramid.hpp" 
+#include "Pyramid.hpp" 
 
 
 int main(int argc, char const *argv[])
