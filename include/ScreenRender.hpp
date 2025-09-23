@@ -20,7 +20,6 @@ public:
     {
         float dx = pos1.x - pos.x;
         float dy = pos1.y - pos.y;
-        float a = dy / dx;
         float y = 0;
         float x = 0;
         float step;
