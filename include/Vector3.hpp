@@ -22,7 +22,7 @@ struct Vector3
     }
     Vector3 operator-(const Vector3 &a) const
     {
-        return Vector3(a.y - y, a.y - y, a.z - z);
+        return Vector3(a.x - x, a.y - y, a.z - z);
     }
     Vector3 operator*(const float &a) const
     {
@@ -41,11 +41,22 @@ struct Vector3
         return (x == a.x && y == a.y && z == a.z);
     }
 };
-Vector3 Add(Vector3 *a, Vector3 *b)
+Vector3 add(Vector3 *a, Vector3 *b)
 {
     return Vector3(a->x + b->x, a->y + b->y, a->z + b->z);
 }
 Vector3 Multiply(Vector3 *a, float b)
 {
-    return Vector3(a->x *b, a->y *b, a->z *b);
+    return Vector3(a->x * b, a->y * b, a->z * b);
+}
+float Dot(Vector3 a, Vector3 b)
+{
+    return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+Vector3 Cross(Vector3 a, Vector3 b)
+{
+    return Vector3(
+        a.y * b.z - a.z * b.y,
+        a.z * b.x - a.x * b.z,
+        a.x * b.y - a.y * b.x);
 }

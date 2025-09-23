@@ -41,6 +41,6 @@ void DrawCube(Shapes *r, Model cube, char c)
             cube.pivot+cube.vertex[CubeFaces[i][1]],
             cube.pivot+cube.vertex[CubeFaces[i][2]],
             cube.pivot+cube.vertex[CubeFaces[i][3]],
-            c);
+            c+i);
     }
 }

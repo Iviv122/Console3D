@@ -15,37 +15,25 @@
 
 int main(int argc, char const *argv[])
 {
-    Screen *s = new Screen(50, 30);
+    Screen *s = new Screen(50, 50);
     Shapes *r = new Shapes(s);
     
-    //Model m = Cube();
-    Model m = Piramid();
-    //Model m = Face();
-    //std::vector<Vector4> ver;
-    //for (float i = -1; i < 1; i+=0.1)
-    //{
-    //    ver.push_back(Vector4(i,0,0,1));
-    //}
-    
-    //Model m = Line(ver);
+    Model m = Cube();
 
-    Vector3 offset = Vector3(0, 0, 1);
+    Vector3 offset = Vector3(0, 0, 11);
     m.Move(offset);
     m.Scale(10);
    
     float a = 3;
-
+   
     while (true)
     {
         s->Fill(' ');
 
-        //DrawLine(r,m,'x');
-        //DrawFace(r,m,'x');
-        DrawPyramid(r,m,'x');
-        //DrawCube(r,m,'x');
+        DrawCube(r,m,'x');
         m.RotateX(0.1); 
         m.RotateY(0.2); 
-        //m.RotateZ(0.2);
+        m.RotateZ(0.2);
 
         s->Print();
         usleep(1000 * 100);
