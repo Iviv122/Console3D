@@ -1,5 +1,5 @@
 Point perspective
-![cube](./demo/cube.mp4)
+![cube](https://github.com/Iviv122/Console3D/blob/master/demo/cube.mp4)
 
 Isometric perspective
 ![cube](./demo/isometicCube.mp4)
