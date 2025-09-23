@@ -56,18 +56,18 @@ public:
         DrawLine(pos3, pos, c);
     }
     // Isometric =))) Skill issue btw, i couldn't find any normal perspective so here it is XD
-    // Vector3 Translate(Vector4 point)
-    //{
-    //    return Vector3((point.x - point.z) / sqrt(2), (point.x + point.y * 2 + point.z) / sqrt(6), point.w);
-    //}
-
+    /*
+    Vector3 Translate(Vector4 point)
+    {
+        return Vector3((point.x - point.z) / sqrt(2), (point.x + point.y * 2 + point.z) / sqrt(6), point.w);
+    }
+    */
     // Honestly it just works :DDD
     Vector3 Translate(Vector4 point)
     {
         float f = 10;
         return Vector3(point.x * (f / point.z), point.y * (f / point.z), 0);
     }
-
     void DrawLineWorld(Vector4 pos, Vector4 pos1, char c)
     {
         DrawLine(Translate(pos), Translate(pos1), c);
@@ -84,16 +84,16 @@ public:
 
         Vector3 Normal = Cross(A, B);
 
+        // backculling check
         if (Dot(Normal, Vector3(0, 0, 1)) > 0)
         {
 
             DrawLine(Translate(pos), Translate(pos1), c);
             DrawLine(Translate(pos1), Translate(pos2), c);
             DrawLine(Translate(pos2), Translate(pos), c);
-        
         }
     }
-    
+
     void DrawPlane(Vector4 pos, Vector4 pos1, Vector4 pos2, Vector4 pos3, const char c)
     {
         /* more streightforward way to render :p

@@ -4,7 +4,6 @@
 #include <thread>
 #include <chrono>
 
-
 #include "Screen.hpp"
 #include "ScreenRender.hpp"
 #include "Vector2.hpp"
@@ -16,14 +15,14 @@
 
 int main(int argc, char const *argv[])
 {
-    Screen *s = new Screen(50, 50);
+    Screen *s = new Screen(25, 25);
+
     Shapes *r = new Shapes(s);
-    
-    Model m = Cube();
+    Model m = Cube(); 
 
     Vector3 offset = Vector3(0, 0, 11);
     m.Move(offset);
-    m.Scale(10);
+    m.Scale(8);
     
     float a = 3;
    
