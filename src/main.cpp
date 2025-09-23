@@ -1,8 +1,9 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <thread>
+#include <chrono>
 
-#include <unistd.h>
 
 #include "Screen.hpp"
 #include "ScreenRender.hpp"
@@ -23,7 +24,7 @@ int main(int argc, char const *argv[])
     Vector3 offset = Vector3(0, 0, 11);
     m.Move(offset);
     m.Scale(10);
-   
+    
     float a = 3;
    
     while (true)
@@ -32,11 +33,11 @@ int main(int argc, char const *argv[])
 
         DrawCube(r,m,'x');
         m.RotateX(0.1); 
-        m.RotateY(0.2); 
-        m.RotateZ(0.2);
+        m.RotateY(0.15); 
+        //m.RotateZ(0.15+sin(a)*0.1);
 
         s->Print();
-        usleep(1000 * 100);
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
         a += 0.5;
     }
 

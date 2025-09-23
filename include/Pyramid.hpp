@@ -13,7 +13,7 @@ std::vector<std::vector<int>> PiramidFaces = {
     {0, 1, 3},
     {3, 2, 1}};
 
-Model Piramid()
+Model Pyramid()
 {
     return Model(
         {Vector4(-0.5, -0.5, -.5, 1),
