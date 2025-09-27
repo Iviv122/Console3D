@@ -10,10 +10,12 @@ class Shapes
 {
 private:
     Screen *s;
+    bool isometric = false;
 
 public:
-    Shapes(Screen *s)
+    Shapes(Screen *s, bool isometric)
     {
+        this->isometric = isometric;
         this->s = s;
     }
     void DrawLine(const Vector3 pos, const Vector3 pos1, const char &c)
@@ -56,12 +58,10 @@ public:
         DrawLine(pos3, pos, c);
     }
     // Isometric =))) Skill issue btw, i couldn't find any normal perspective so here it is XD
-    /*
-    Vector3 Translate(Vector4 point)
+    Vector3 TranslateIsometric(Vector4 point)
     {
         return Vector3((point.x - point.z) / sqrt(2), (point.x + point.y * 2 + point.z) / sqrt(6), point.w);
     }
-    */
     // Honestly it just works :DDD
     Vector3 Translate(Vector4 point)
     {
@@ -74,10 +74,23 @@ public:
     }
     void DrawPolygon(Vector4 pos, Vector4 pos1, Vector4 pos2, const char c)
     {
+        Vector3 p0;
+        Vector3 p1;
+        Vector3 p2;
 
-        Vector3 p0 = Translate(pos);
-        Vector3 p1 = Translate(pos1);
-        Vector3 p2 = Translate(pos2);
+        if (isometric)
+        {
+            p0 = TranslateIsometric(pos);
+            p1 = TranslateIsometric(pos1);
+            p2 = TranslateIsometric(pos2);
+
+        }
+        else
+        {
+            p0 = Translate(pos);
+            p1 = Translate(pos1);
+            p2 = Translate(pos2);
+        }
 
         Vector3 A = p1 - p0;
         Vector3 B = p2 - p0;
@@ -87,10 +100,18 @@ public:
         // backculling check
         if (Dot(Normal, Vector3(0, 0, 1)) > 0)
         {
-
-            DrawLine(Translate(pos), Translate(pos1), c);
-            DrawLine(Translate(pos1), Translate(pos2), c);
-            DrawLine(Translate(pos2), Translate(pos), c);
+            if (isometric)
+            {
+                DrawLine(TranslateIsometric(pos), TranslateIsometric(pos1), c);
+                DrawLine(TranslateIsometric(pos1), TranslateIsometric(pos2), c);
+                DrawLine(TranslateIsometric(pos2), TranslateIsometric(pos), c);
+            }
+            else
+            {
+                DrawLine(Translate(pos), Translate(pos1), c);
+                DrawLine(Translate(pos1), Translate(pos2), c);
+                DrawLine(Translate(pos2), Translate(pos), c);
+            }
         }
     }
 

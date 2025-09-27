@@ -15,9 +15,33 @@
 
 int main(int argc, char const *argv[])
 {
-    Screen *s = new Screen(25, 25);
+    uint width = 0;    
+    uint height = 0;
 
-    Shapes *r = new Shapes(s);
+    std::cout <<"enter preferable screen width: ";
+    std::cin >> width;
+
+    if(width <= 0){
+        std::cout << "incorect width \n";
+        return 1;
+    }
+
+    std::cout <<"enter preferable screen height: ";
+    std::cin >> height;
+
+    if(width <= 0){
+        std::cout << "incorect height \n";
+        return 1;
+    }
+
+    bool isometric = false;
+
+    std::cout << "enter 0 if you want isometric look. else perspective: ";
+    std::cin >> isometric; 
+
+    Screen *s = new Screen(width, height);
+    
+    Shapes *r = new Shapes(s,isometric);
     Model m = Cube(); 
 
     Vector3 offset = Vector3(0, 0, 11);
@@ -38,6 +62,7 @@ int main(int argc, char const *argv[])
         s->Print();
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         a += 0.5;
+        std::cout << isometric << "\n";
     }
 
     return 0;
